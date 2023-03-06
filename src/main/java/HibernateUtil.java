@@ -15,8 +15,7 @@ public class HibernateUtil {
     private static SessionFactory initSessionFactory() {
         try {
             return new Configuration().configure(new File("src\\main\\resources\\hibernate.cfg.xml")).buildSessionFactory();
-        }
-        catch (Throwable ex) {
+        } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
@@ -25,7 +24,7 @@ public class HibernateUtil {
     // этот метод будем вызывать, когда потрбуется SessionFactory
     public static SessionFactory getSessionFactory() {
 
-        if (sessionFactory == null){
+        if (sessionFactory == null) {
             initSessionFactory();
         }
 

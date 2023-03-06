@@ -14,6 +14,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_data", schema = "todolist", catalog = "hibernate_prac")
 public class User {
+
+    public User(String email, String username) {
+        this.email = email;
+        this.username = username;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
