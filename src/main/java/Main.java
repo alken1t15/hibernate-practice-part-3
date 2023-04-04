@@ -1,13 +1,14 @@
 
 
+import entity.Category;
 import entity.User;
 import lombok.extern.log4j.Log4j2;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
 
 //import javax.persistence.Query;
+import javax.persistence.Query;
 import javax.persistence.criteria.*;
 import java.util.List;
 import java.util.Objects;
@@ -108,24 +109,106 @@ public class Main {
 //
 //        log.info(list);
 
-        NativeQuery<Object[]> nativeQuery = session.createNativeQuery("select " +
-                "count(u.id)," +
-                "substring(u.email, position('@' in u.email)+1, length(u.email)) as domainemail " +
-                "from todolist.user_data u " +
-                "where u.email like '%@%' " +
-                "group by substring(u.email, position('@' in u.email)+1, length(u.email))");
+//        NativeQuery<Object[]> nativeQuery = session.createNativeQuery("select " +
+//                "count(u.id)," +
+//                "substring(u.email, position('@' in u.email)+1, length(u.email)) as domainemail " +
+//                "from todolist.user_data u " +
+//                "where u.email like '%@%' " +
+//                "group by substring(u.email, position('@' in u.email)+1, length(u.email))");
+//
+//        for (Object[] obj : nativeQuery.getResultList()) {
+//            log.info(obj[0]);
+//            log.info(obj[1]);
+//            log.info("-------");
+//        }
+        //        log.info(userList);
 
-        for (Object[] obj : nativeQuery.getResultList()) {
-            log.info(obj[0]);
-            log.info(obj[1]);
-            log.info("-------");
-        }
+//        User user = session.get(User.class,10025L);
+//
+//        log.info(user);
 
+//        Query query = session.createQuery("from User ");
+//        query.setMaxResults(1);
+//        List<User> users = query.getResultList();
+//
+//        log.info(users.get(0).getPriorities());
 
-//        log.info(userList);
+//        Query query = session.createQuery("from Category ");
+//        query.setMaxResults(10);
+//
+//        List<Category> categories = query.getResultList();
+//
+//        for(Category c : categories){
+//            log.info(c.getTitle());
+//        }
 
+//        Query query = session.createQuery("from User ");
+//        query.setMaxResults(10);
+//
+//        List<User> users = query.getResultList();
+//
+//        for(User u : users){
+//            log.info(u.getUsername());
+//        }
 
+//        Query query = session.createQuery("from User ");
+//        query.setMaxResults(2);
+//
+//        List<User> users = query.getResultList();
+//
+//        log.info(users.get(0).getRoles());
+
+//        User user1 = session.get(User.class,10025L);
+//
+//        log.info(user1);
+//
+//        session.close();
+//
+//        session = HibernateUtil.getSessionFactory().openSession();
+//
+//        User user2 = session.get(User.class,10025L);
+//
+//        log.info(user2);
+//
+//        session.close();
+//
+//        log.info ("hit " + HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
+//        log.info ("miss " + HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheMissCount ());
+//        log.info ("put " + HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCachePutCount());
+//        for (String s : HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheRegionNames()) {
+//            log.info(s);
+//        }
+//        HibernateUtil.close();
+
+//        User u1 = session.get(User.class,10032L);
+//
+//        session.beginTransaction();
+//
+//        session.delete(u1);
+//
+//        session.getTransaction().commit();
+
+//        session.beginTransaction();
+//
+//        for(int i = 0 ; i<200;i++){
+//            User user =  new User();
+//            user.setUsername("name " + i);
+//            user.setEmail("name " + i);
+//            user.setUserpassword("ffdgfdgdagfd");
+//
+//            session.save(user);
+//
+//            if(i % 100 == 0){
+//                session.flush();
+//            }
+//        }
+//
+//        session.getTransaction().commit();
+
+        User user = session.get(User.class,10068L);
+        log.info(user);
         session.close();
+
         HibernateUtil.close();
 
     }

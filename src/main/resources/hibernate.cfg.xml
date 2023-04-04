@@ -10,7 +10,19 @@
       <property name="connection.username">postgres</property>
       <property name="connection.password">root</property>
       <property name="hibernate.show_sql">true</property>
+<!--      <property name="hibernate.cache.use_second_level_cache">true</property>-->
+<!--      <property name="hibernate.cache.provider_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>-->
+      <property name="hibernate.cache.use_second_level_cache">true</property>
+      <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+      <property name="hibernate.generate_statistics">true</property>
+      <property name="hibernate.cache.ehcache.missing_cache_strategy">create</property>
+      
       <mapping class="entity.User"/>
+      <mapping class="entity.Category"/>
+      <mapping class="entity.Priority"/>
+      <mapping class="entity.Activity"/>
+      <mapping class="entity.Stat"/>
+      <mapping class="entity.Role"/>
 
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
