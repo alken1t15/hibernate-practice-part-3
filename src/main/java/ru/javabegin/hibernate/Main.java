@@ -1,27 +1,22 @@
+package ru.javabegin.hibernate;
 
-
-import entity.Category;
-import entity.User;
+import ru.javabegin.hibernate.dao.UserDAOImpl;
+import ru.javabegin.hibernate.entity.*;
 import lombok.extern.log4j.Log4j2;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
 
 //import javax.persistence.Query;
-import javax.persistence.Query;
-import javax.persistence.criteria.*;
-import java.util.List;
-import java.util.Objects;
+
 
 @Log4j2
 public class Main {
 
     public static void main(String[] args) {
 
-        log.info("Hibernate tutorial started");
-
-        // сразу получаем готовый SessionFactory и сразу создаем сессию
-        Session session = HibernateUtil.getSessionFactory().openSession();
+//        log.info("Hibernate tutorial started");
+//
+//        // сразу получаем готовый SessionFactory и сразу создаем сессию
+//        Session session = HibernateUtil.getSessionFactory().openSession();
 
         // получение запросы - получение всех пользователей
 //        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -73,7 +68,7 @@ public class Main {
 //        transaction.commit();
 //
 //        session.close();
-//        HibernateUtil.close();
+//        ru.javabegin.hibernate.HibernateUtil.close();
 
 
         //HQL
@@ -164,7 +159,7 @@ public class Main {
 //
 //        session.close();
 //
-//        session = HibernateUtil.getSessionFactory().openSession();
+//        session = ru.javabegin.hibernate.HibernateUtil.getSessionFactory().openSession();
 //
 //        User user2 = session.get(User.class,10025L);
 //
@@ -172,13 +167,13 @@ public class Main {
 //
 //        session.close();
 //
-//        log.info ("hit " + HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
-//        log.info ("miss " + HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheMissCount ());
-//        log.info ("put " + HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCachePutCount());
-//        for (String s : HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheRegionNames()) {
+//        log.info ("hit " + ru.javabegin.hibernate.HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
+//        log.info ("miss " + ru.javabegin.hibernate.HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheMissCount ());
+//        log.info ("put " + ru.javabegin.hibernate.HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCachePutCount());
+//        for (String s : ru.javabegin.hibernate.HibernateUtil.getSessionFactory().getStatistics().getSecondLevelCacheRegionNames()) {
 //            log.info(s);
 //        }
-//        HibernateUtil.close();
+//        ru.javabegin.hibernate.HibernateUtil.close();
 
 //        User u1 = session.get(User.class,10032L);
 //
@@ -205,9 +200,61 @@ public class Main {
 //
 //        session.getTransaction().commit();
 
-        User user = session.get(User.class,10068L);
-        log.info(user);
-        session.close();
+//        User user = session.get(User.class,10068L);
+//        log.info(user);
+
+//        Stat stat = session.get(Stat.class, 10028L);
+//        log.info(stat.getUser());
+
+//        Role role = session.get(Role.class, 2L);
+//        log.info(role.getUsers());
+
+//        Priority priority = session.get(Priority.class, 30081L);
+//        log.info(priority);
+
+//        Category category = session.get(Category.class, 60133L);
+//        log.info(category.getUser());
+
+//        Activity activity = session.get(Activity.class, 5L);
+//        log.info(activity);
+
+//        Task t1 = session.get(Task.class,50164L);
+//
+//        log.info(t1.getUser());
+
+//        User u= session.get(User.class,10068L);
+//
+//        log.info(u);
+
+//        session.beginTransaction();
+//
+//        log.info("Hibernate  tutorial started");
+//        Role r1 = session.get(Role.class,1L);
+//        Role r2 = session.get(Role.class,2L);
+//
+//        User u = new User();
+//        u.setUsername("manyroles");
+//        u.setEmail("manyroles@email.com");
+//        u.setPassword("gdagdagfd");
+//        u.getRoles().add(r1);
+//        u.getRoles().add(r2);
+//
+//        session.save(u);
+//
+//        session.getTransaction().commit();
+//
+//        session.close();
+//
+//        HibernateUtil.close();
+
+
+        UserDAOImpl userDAO = new UserDAOImpl();
+
+        User u = new User();
+        u.setPassword("password");
+        u.setUsername("username");
+        u.setEmail("email@username@gmail.com");
+        userDAO.add(u);
 
         HibernateUtil.close();
 

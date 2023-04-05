@@ -1,4 +1,4 @@
-
+package ru.javabegin.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -8,10 +8,10 @@ import java.io.File;
 // спец. Java класс для инициализации Hibernate
 public class HibernateUtil {
 
-    // фабрика для создания сесиий
+    // Фабрика для создания сессий
     private static final SessionFactory sessionFactory = initSessionFactory();
 
-    // этот метод вызывается автоматически, т.к. он вызывается из статичной переменной
+    // Этот метод вызывается автоматически, т.к. он вызывается из статичной переменной
     private static SessionFactory initSessionFactory() {
         try {
             return new Configuration().configure(new File("src\\main\\resources\\hibernate.cfg.xml")).buildSessionFactory();
@@ -21,7 +21,7 @@ public class HibernateUtil {
         }
     }
 
-    // этот метод будем вызывать, когда потрбуется SessionFactory
+    // Этот метод будем вызывать, когда потрбуется SessionFactory
     public static SessionFactory getSessionFactory() {
 
         if (sessionFactory == null) {
@@ -31,7 +31,7 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    // закрыть все соединения с помощью SessionFactory
+    // Закрыть все соединения с помощью SessionFactory
     public static void close() {
         getSessionFactory().close();
     }

@@ -1,4 +1,4 @@
-package entity;
+package ru.javabegin.hibernate.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,9 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -35,29 +33,31 @@ public class User {
     private String email;
     @Basic
     @Column(name = "userpassword", nullable = false, length = -1)
-    private String userpassword;
+    private String password;
     @Basic
     @Column(name = "username", nullable = false, length = -1)
     private String username;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    List<Category> categories;
-
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    List<Priority> priorities;
-
-    @OneToOne(mappedBy = "user",fetch = FetchType.LAZY, optional = false)
-    private  Activity activity;
-
-    @OneToOne(mappedBy = "user",fetch = FetchType.LAZY, optional  = false)
-    private  Stat stat;
-
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "user_role",schema = "todolist", catalog = "hibernate_prac",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
+//    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    List<Category> categories;
+//
+//    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+//    List<Priority> priorities;
+//
+//    @OneToOne(mappedBy = "user",fetch = FetchType.LAZY, optional = false)
+//    private  Activity activity;
+//
+//    @OneToOne(mappedBy = "user",fetch = FetchType.LAZY, optional  = false)
+//    private  Stat stat;
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private List<Task> tasks;
 
     @Override
     public boolean equals(Object o) {

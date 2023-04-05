@@ -17,12 +17,13 @@
       <property name="hibernate.generate_statistics">true</property>
       <property name="hibernate.cache.ehcache.missing_cache_strategy">create</property>
       
-      <mapping class="entity.User"/>
-      <mapping class="entity.Category"/>
-      <mapping class="entity.Priority"/>
-      <mapping class="entity.Activity"/>
-      <mapping class="entity.Stat"/>
-      <mapping class="entity.Role"/>
+      <mapping class="ru.javabegin.hibernate.entity.User"/>
+      <mapping class="ru.javabegin.hibernate.entity.Category"/>
+      <mapping class="ru.javabegin.hibernate.entity.Priority"/>
+      <mapping class="ru.javabegin.hibernate.entity.Activity"/>
+      <mapping class="ru.javabegin.hibernate.entity.Stat"/>
+      <mapping class="ru.javabegin.hibernate.entity.Role"/>
+      <mapping class="ru.javabegin.hibernate.entity.Task"/>
 
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
