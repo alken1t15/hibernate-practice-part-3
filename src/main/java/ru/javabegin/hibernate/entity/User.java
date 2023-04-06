@@ -38,10 +38,7 @@ public class User {
     @Column(name = "username", nullable = false, length = -1)
     private String username;
 
-    @ManyToMany
-    @JoinTable(name = "user_role",schema = "todolist", catalog = "hibernate_prac",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
 //    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)

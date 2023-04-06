@@ -1,9 +1,7 @@
 package ru.javabegin.hibernate;
 
-import ru.javabegin.hibernate.dao.UserDAOImpl;
-import ru.javabegin.hibernate.entity.*;
 import lombok.extern.log4j.Log4j2;
-import org.hibernate.Session;
+import ru.javabegin.hibernate.dao.impl.TaskDAOImpl;
 
 //import javax.persistence.Query;
 
@@ -247,17 +245,43 @@ public class Main {
 //
 //        HibernateUtil.close();
 
+        //       UserDAOImpl userDAO = new UserDAOImpl();
 
-        UserDAOImpl userDAO = new UserDAOImpl();
+//        User u = new User();
+//        u.setId(20231L);
+//        u.setPassword("passwfde762543");
+//        u.setUsername("userafr762354");
+//        u.setEmail("email333764@username@gmail.com");
+//        userDAO.add(u);
 
-        User u = new User();
-        u.setPassword("password");
-        u.setUsername("username");
-        u.setEmail("email@username@gmail.com");
-        userDAO.add(u);
+
+//        UserDAOImpl userDAO = new UserDAOImpl();
+//
+//        User u = new User();
+//        u.setId(20231L);
+//        u.setPassword("passwfde762543");
+//        u.setUsername("userafr762354");
+//        u.setEmail("email333764@username@gmail.com");
+//        userDAO.update(u);
+
+//        UserDAOImpl userDAO = new UserDAOImpl();
+//
+//        User u = userDAO.get(20231L);
+//        log.info(u.getRoles());
+
+//        UserDAOImpl userDAO = new UserDAOImpl();
+
+//        userDAO.delete(20231L);
+
+//        log.info(userDAO.get(20231L).getRoles());
+
+//        log.info(userDAO.findAll("manyroles"));
+
+        TaskDAOImpl taskDAO = new TaskDAOImpl();
+
+        log.info(taskDAO.find(true, "email2@gmail.com"));
 
         HibernateUtil.close();
 
     }
-
 }

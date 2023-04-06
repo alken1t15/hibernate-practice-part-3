@@ -8,6 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,8 +26,11 @@ public class Role {
 
     private String name;
 
-//    @ManyToMany(mappedBy = "roles",fetch = FetchType.LAZY)
-//    private Set<User> users;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",schema = "todolist", catalog = "hibernate_prac",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> users;
 
 
     @Override

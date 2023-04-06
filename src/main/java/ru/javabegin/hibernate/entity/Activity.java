@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "activity",schema = "todolist",catalog = "hibernate_prac")
+@Table(name = "activity", schema = "todolist", catalog = "hibernate_prac")
 @NoArgsConstructor
 @Setter
 @Getter
